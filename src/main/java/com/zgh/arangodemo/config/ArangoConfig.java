@@ -1,11 +1,16 @@
 package com.zgh.arangodemo.config;
 
 import com.arangodb.ArangoDB;
+import com.arangodb.springframework.annotation.EnableArangoRepositories;
 import com.arangodb.springframework.config.AbstractArangoConfiguration;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.repository.query.QueryLookupStrategy;
 
 @Configuration
+@EnableArangoRepositories(queryLookupStrategy = QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND,basePackages = "${spring.arangodb.repositoryPackage}", namedQueriesLocation = "${spring.arangodb.namedQueriesLocation}")
+@Slf4j
 public class ArangoConfig extends AbstractArangoConfiguration {
 
     @Value("${spring.arangodb.host}")

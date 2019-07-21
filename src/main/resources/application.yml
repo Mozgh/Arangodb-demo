@@ -8,5 +8,7 @@ spring:
     user: admin
     password: admin
     userSsl: false
+    repositoryPackage: com.zgh.arangodemo
+    namedQueriesLocation: classpath:/arango/*.properties
 server:
   port: 8080
